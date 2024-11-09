@@ -12,7 +12,7 @@ export default function Cell({ cell, style }: CellProps) {
         gridTemplateRows: `repeat(${cell.height}, 1fr)`,
         gridTemplateColumns: `repeat(${cell.width}, 1fr)`,
         border: "2px solid black",
-        backgroundColor: cell.bgColor?.hexa(),
+        backgroundColor: cell.bgColor?.hex() || "white",
         ...style,
     };
     return (

@@ -4,13 +4,13 @@ import { GameGrid } from "./grid";
 import { GameTile } from "./tile";
 
 export enum CellType {
-    BEACH,
-    URBAN,
-    RURAL,
-    FOREST,
-    MEADOW,
-    EMPTY,
-    WATER
+    BEACH = "beach",
+    URBAN = "urban",
+    RURAL = "rural",
+    FOREST = "forest",
+    MEADOW = "meadow",
+    EMPTY = "empty",
+    WATER = "water",
 }
 
 export interface CellArgs {
