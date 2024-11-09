@@ -1,6 +1,5 @@
 import { GameCell } from "@/lib/cell";
-import { randomColor } from "@/lib/utils";
-// import Image from 'next/image';
+import Image from 'next/image';
 
 interface CellProps {
     cell: GameCell;
@@ -24,22 +23,23 @@ export default function Cell({ cell, style }: CellProps) {
                         const style: React.CSSProperties = {
                             width: "32px",
                             height: "32px",
-                            backgroundColor: randomColor().hex(),
+                            // backgroundColor: randomColor().hex(),
                             gridRow: ridx + 1,
                             gridColumn: cidx + 1,
                         };
-                        // return (
-                        //     <Image
-                        //         key={key}
-                        //         src={`/tiles/${tile.img}.png`}
-                        //         alt={tile.img}
-                        //         width={32}
-                        //         height={32}
-                        //     />
-                        // )
                         return (
-                            <div key={key} style={style}></div>
+                            <Image
+                                key={key}
+                                src={`/tiles/${tile.img}.png`}
+                                alt={tile.img}
+                                width={32}
+                                height={32}
+                                style={style}
+                            />
                         )
+                        // return (
+                        //     <div key={key} style={style}></div>
+                        // )
                     })
                 ))
             }

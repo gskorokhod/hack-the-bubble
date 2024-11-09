@@ -29,6 +29,6 @@ export class GameTile {
     }
 
     get img() {
-        return `/tiles/${this.type}.png`;
+        return `${this.type}.png`;
     }
 }
