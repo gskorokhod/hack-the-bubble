@@ -1,6 +1,5 @@
 import { CellType, GameCell } from "./cell";
 import { GameTile, Tile } from "./tile";
-import { randomEnum } from "./utils";
 
 export class GameGrid {
     tiles: GameTile[][];
@@ -17,11 +16,23 @@ export class GameGrid {
         return new GameGrid(size, size, cell_size, cell_size);
     }
 
+    public cellIsEdge(row: number, col: number) {
+        return row === 0 || col === 0 || row === this.rows - 1 || col === this.cols - 1;
+    }
+
+    public tileIsEdge(row: number, col: number) {
+        return row === 0 || col === 0 || row === this.tiles.length - 1 || col === this.tiles[0].length - 1;
+    }
+
     private generateTiles(rows: number, cols: number, cell_height: number, cell_width: number) {
         for (let row = 0; row < rows * cell_height; row++) {
             this.tiles[row] = [];
             for (let col = 0; col < cols * cell_width; col++) {
-                this.tiles[row][col] = new GameTile(this, row, col, randomEnum(Tile));
+                if (this.tileIsEdge(row, col)) {
+                    this.tiles[row][col] = new GameTile(this, row, col, Tile.EMPTY);
+                } else {
+                    this.tiles[row][col] = new GameTile(this, row, col, Tile.EMPTY);
+                }
             }
         }
     }
@@ -37,7 +48,7 @@ export class GameGrid {
                     height: cell_height,
                     width: cell_width,
                     approval: Math.random() * (100 - 70) + 70,
-                    type: randomEnum(CellType),
+                    type: this.cellIsEdge(row, col) ? CellType.WATER : CellType.EMPTY,
                 });
             }
         }

@@ -1,14 +1,16 @@
+import Color from "color";
 import { District } from "./district";
 import { GameGrid } from "./grid";
 import { GameTile } from "./tile";
 
 export enum CellType {
-    COAST,
+    BEACH,
     URBAN,
     RURAL,
     FOREST,
     MEADOW,
-    EMPTY
+    EMPTY,
+    WATER
 }
 
 export interface CellArgs {
@@ -65,6 +67,25 @@ export class GameCell {
             }
         }
         return tiles;
+    }
+
+    get bgColor(): Color | null {
+        switch (this.type) {
+            case CellType.WATER:
+                return Color.rgb(0, 150, 200);
+            case CellType.BEACH:
+                return Color.rgb(194, 178, 128);
+            case CellType.URBAN:
+                return Color.rgb(128, 128, 128);
+            case CellType.RURAL:
+                return Color.rgb(154, 205, 50);
+            case CellType.FOREST:
+                return Color.rgb(34, 139, 34);
+            case CellType.MEADOW:
+                return Color.rgb(124, 218, 124);
+            case CellType.EMPTY:
+                return null;
+        }
     }
 
     public equals(cell: GameCell) {
