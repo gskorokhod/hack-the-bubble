@@ -28,6 +28,10 @@ export class GameGrid {
         return row >= 0 && row < this.rows && col >= 0 && col < this.cols;
     }
 
+    public tileExists(row: number, col: number) {
+        return row >= 0 && row < this.tiles.length && col >= 0 && col < this.tiles[0].length;
+    }
+
     private generateTiles(rows: number, cols: number, cell_height: number, cell_width: number) {
         for (let row = 0; row < rows * cell_height; row++) {
             this.tiles[row] = [];
