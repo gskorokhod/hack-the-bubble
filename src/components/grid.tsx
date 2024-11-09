@@ -10,6 +10,7 @@ export default function Grid(props: GridProps) {
     display: "grid",
     gridTemplateRows: `repeat(${props.grid.rows}, 1fr)`,
     gridTemplateColumns: `repeat(${props.grid.cells}, 1fr)`,
+    border: "2px solid black",
   };
   return (
     <div style={style}>
