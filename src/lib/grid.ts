@@ -1,9 +1,9 @@
-import { Cell } from "./cell";
-import { Tile } from "./tile";
+import { GameCell } from "./cell";
+import { GameTile } from "./tile";
 
-export class Grid {
-    tiles: Tile[][];
-    cells: Cell[][];
+export class GameGrid {
+    tiles: GameTile[][];
+    cells: GameCell[][];
     
     constructor(rows: number, cols: number, cell_height: number, cell_width: number) {
         this.tiles = [];
@@ -12,11 +12,15 @@ export class Grid {
         this.generateCells(rows, cols, cell_height, cell_width);
     }
 
+    public static square(size: number, cell_size: number) {
+        return new GameGrid(size, size, cell_size, cell_size);
+    }
+
     private generateTiles(rows: number, cols: number, cell_height: number, cell_width: number) {
         for (let row = 0; row < rows * cell_height; row++) {
             this.tiles[row] = [];
             for (let col = 0; col < cols * cell_width; col++) {
-                this.tiles[row][col] = new Tile(this, row, col, "");
+                this.tiles[row][col] = new GameTile(this, row, col, "");
             }
         }
     }
@@ -25,7 +29,7 @@ export class Grid {
         for (let row = 0; row < rows; row++) {
             this.cells[row] = [];
             for (let col = 0; col < cols; col++) {
-                this.cells[row][col] = new Cell({
+                this.cells[row][col] = new GameCell({
                     grid: this,
                     row,
                     col,

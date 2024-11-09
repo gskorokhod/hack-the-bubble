@@ -1,12 +1,12 @@
-import { Grid } from "./grid";
+import { GameGrid } from "./grid";
 
-export class Tile {
+export class GameTile {
     img: string;
     readonly row: number;
     readonly col: number;
-    readonly grid: Grid;
+    readonly grid: GameGrid;
 
-    constructor(grid: Grid, row: number, col: number, img: string) {
+    constructor(grid: GameGrid, row: number, col: number, img: string) {
         this.grid = grid;
         this.row = row;
         this.col = col;

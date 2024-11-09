@@ -1,9 +1,9 @@
-import { Cell } from "./cell";
+import { GameCell } from "./cell";
 
 export class District {
-    private _cells: Cell[];
+    private _cells: GameCell[];
 
-    constructor(cells: Cell[]) {
+    constructor(cells: GameCell[]) {
         this._cells = cells;
     }
 
@@ -11,14 +11,14 @@ export class District {
         return this._cells;
     }
 
-    public add(cell: Cell) {
+    public add(cell: GameCell) {
         if (this.cells.some(c => c.equals(cell))) {
             return;
         }
         this._cells.push(cell);
     }
 
-    public remove(cell: Cell) {
+    public remove(cell: GameCell) {
         this._cells = this.cells.filter(c => !c.equals(cell));
     }
 }

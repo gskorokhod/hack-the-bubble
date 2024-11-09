@@ -1,9 +1,9 @@
 import { District } from "./district";
-import { Grid } from "./grid";
-import { Tile } from "./tile";
+import { GameGrid } from "./grid";
+import { GameTile } from "./tile";
 
 interface CellArgs {
-    grid: Grid;
+    grid: GameGrid;
     row: number;
     col: number;
     height: number;
@@ -11,9 +11,9 @@ interface CellArgs {
     district?: District | null;
 }
 
-export class Cell {
+export class GameCell {
     private _district: District | null = null;
-    readonly grid: Grid;
+    readonly grid: GameGrid;
     readonly row: number;
     readonly col: number;
     readonly height: number;
@@ -39,10 +39,10 @@ export class Cell {
         this._district = district;
     }
 
-    get tiles(): Tile[][] {
+    get tiles(): GameTile[][] {
         const tr = this.row * this.height;
         const tc = this.col * this.width;
-        const tiles: Tile[][] = [];
+        const tiles: GameTile[][] = [];
         for (let roff = 0; roff < this.height; roff++) {
             tiles[roff] = [];
             for (let coff = 0; coff < this.width; coff++) {
@@ -52,7 +52,7 @@ export class Cell {
         return tiles;
     }
 
-    public equals(cell: Cell) {
+    public equals(cell: GameCell) {
         return this.row === cell.row && this.col === cell.col;
     }
 }
