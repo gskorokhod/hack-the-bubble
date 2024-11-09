@@ -10,18 +10,20 @@ interface CellArgs {
     width: number;
     district?: District | null;
     approval: number
+    type: string
 }
 
 export class GameCell {
-    private _district: District | null = null;
-    public approval: number;
     readonly grid: GameGrid;
     readonly row: number;
     readonly col: number;
     readonly height: number;
     readonly width: number;
+    private _district: District | null = null;
+    public approval: number;
+    public type: string;
 
-    constructor({ grid, row, col, height, width, district = null, approval }: CellArgs) {
+    constructor({ grid, row, col, height, width, district = null, approval, type }: CellArgs) {
         this.grid = grid;
         this.row = row;
         this.col = col;
@@ -29,6 +31,7 @@ export class GameCell {
         this.width = width;
         this.district = district;
         this.approval = approval;
+        this.type = type;
     }
 
     get district() {
