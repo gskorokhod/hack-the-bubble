@@ -1,5 +1,5 @@
 import { CellType, GameCell } from "./cell";
-import { GameTile } from "./tile";
+import { GameTile, Tile } from "./tile";
 import { randomEnum } from "./utils";
 
 export class GameGrid {
@@ -21,7 +21,7 @@ export class GameGrid {
         for (let row = 0; row < rows * cell_height; row++) {
             this.tiles[row] = [];
             for (let col = 0; col < cols * cell_width; col++) {
-                this.tiles[row][col] = new GameTile(this, row, col, "");
+                this.tiles[row][col] = new GameTile(this, row, col, randomEnum(Tile));
             }
         }
     }
@@ -34,10 +34,10 @@ export class GameGrid {
                     grid: this,
                     row,
                     col,
-                    type: randomEnum(CellType),
                     height: cell_height,
                     width: cell_width,
-                    approval: Math.random() * (100 - 70) + 70
+                    approval: Math.random() * (100 - 70) + 70,
+                    type: randomEnum(CellType),
                 });
             }
         }

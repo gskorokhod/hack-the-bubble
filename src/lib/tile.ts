@@ -16,15 +16,17 @@ export enum Tile {
 
 
 export class GameTile {
-    img: string;
+    type: Tile;
     readonly row: number;
     readonly col: number;
     readonly grid: GameGrid;
 
-    constructor(grid: GameGrid, row: number, col: number, img: string) {
+    constructor(grid: GameGrid, row: number, col: number, type: Tile) {
         this.grid = grid;
         this.row = row;
         this.col = col;
-        this.img = img;
+        this.type = type;
     }
+
+    
 }
