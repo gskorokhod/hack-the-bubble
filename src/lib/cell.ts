@@ -88,7 +88,38 @@ export class GameCell {
         }
     }
 
+    get isEdge() {
+        return this.grid.cellIsEdge(this.row, this.col);
+    }
+
     public equals(cell: GameCell) {
         return this.row === cell.row && this.col === cell.col;
+    }
+
+    public getNeighbours(diagonal: boolean = false): GameCell[] {
+        const neighbours: GameCell[] = [];
+        const { row, col } = this;
+
+        const positions = [
+            [row - 1, col],
+            [row + 1, col],
+            [row, col - 1],
+            [row, col + 1]
+        ]
+
+        if (diagonal) {
+            positions.push([row - 1, col - 1]);
+            positions.push([row - 1, col + 1]);
+            positions.push([row + 1, col - 1]);
+            positions.push([row + 1, col + 1]);
+        }
+
+        for (const [r, c] of positions) {
+            if (this.grid.cellExists(r, c)) {
+                neighbours.push(this.grid.cells[r][c]);
+            }
+        }
+
+        return neighbours;
     }
 }
