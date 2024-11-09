@@ -30,8 +30,8 @@ export default function Cell({ cell, style }: CellProps) {
                         return (
                             <Image
                                 key={key}
-                                src={`/tiles/${tile.img}.png`}
-                                alt={tile.img}
+                                src={`/tiles/${tile.img}`}
+                                alt=""
                                 width={32}
                                 height={32}
                                 style={style}
