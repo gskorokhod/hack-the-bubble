@@ -16,8 +16,12 @@ export default function Grid(props: GridProps) {
       {props.grid.cells.map((row, ridx) => (
         row.map((cell, cidx) => {
           const key = `${ridx}-${cidx}`;
+          const style: React.CSSProperties = {
+            gridRow: ridx + 1,
+            gridColumn: cidx + 1,
+          };
           return (
-            <Cell key={key} cell={cell} />
+            <Cell key={key} cell={cell} style={style}/>
           );
         })
       ))}

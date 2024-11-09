@@ -4,20 +4,29 @@ import { randomColor } from "@/lib/utils";
 
 interface CellProps {
     cell: GameCell;
+    style: React.CSSProperties;
 }
 
-export default function Cell({ cell }: CellProps) {
-    const style: React.CSSProperties = {
+export default function Cell({ cell, style }: CellProps) {
+    const _style: React.CSSProperties = {
         display: "grid",
         gridTemplateRows: `repeat(${cell.height}, 1fr)`,
         gridTemplateColumns: `repeat(${cell.width}, 1fr)`,
+        ...style,
     };
     return (
-        <div style={style}>
+        <div style={_style}>
             {
                 cell.tiles.map((row, ridx) => (
                     row.map((tile, cidx) => {
                         const key = `${cell.row}-${cell.col}-${ridx}-${cidx}`;
+                        const style: React.CSSProperties = {
+                            width: "32px",
+                            height: "32px",
+                            backgroundColor: randomColor().hex(),
+                            gridRow: ridx + 1,
+                            gridColumn: cidx + 1,
+                        };
                         // return (
                         //     <Image
                         //         key={key}
@@ -28,7 +37,7 @@ export default function Cell({ cell }: CellProps) {
                         //     />
                         // )
                         return (
-                            <div key={key} style={{ width: "32px", height: "32px", backgroundColor: randomColor().hex() }}></div>
+                            <div key={key} style={style}></div>
                         )
                     })
                 ))
