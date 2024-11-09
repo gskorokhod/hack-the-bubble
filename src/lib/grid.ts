@@ -35,6 +35,7 @@ export class GameGrid {
                     col,
                     height: cell_height,
                     width: cell_width,
+                    approval: Math.random() * (100 - 70) + 70
                 });
             }
         }
