@@ -1,5 +1,20 @@
 import { GameGrid } from "./grid";
 
+export enum Tile {
+    EMPTY = "empty",
+    CITY = "city",
+    HOUSE = "house",
+    TREE = "tree",
+    TANK = "tank",
+    POND_TL = "pond_tl",
+    POND_TR = "pond_tr",
+    POND_BL = "pond_bl",
+    POND_BR = "pond_br",
+    PALMS = "palms",
+    BEACH1 = "beach1",
+}
+
+
 export class GameTile {
     img: string;
     readonly row: number;

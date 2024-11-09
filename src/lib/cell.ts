@@ -2,7 +2,16 @@ import { District } from "./district";
 import { GameGrid } from "./grid";
 import { GameTile } from "./tile";
 
-interface CellArgs {
+export enum CellType {
+    COAST,
+    URBAN,
+    RURAL,
+    FOREST,
+    MEADOW,
+    EMPTY
+}
+
+export interface CellArgs {
     grid: GameGrid;
     row: number;
     col: number;
@@ -10,7 +19,7 @@ interface CellArgs {
     width: number;
     district?: District | null;
     approval: number
-    type: string
+    type: CellType
 }
 
 export class GameCell {
@@ -21,7 +30,7 @@ export class GameCell {
     readonly width: number;
     private _district: District | null = null;
     public approval: number;
-    public type: string;
+    public type: CellType
 
     constructor({ grid, row, col, height, width, district = null, approval, type }: CellArgs) {
         this.grid = grid;

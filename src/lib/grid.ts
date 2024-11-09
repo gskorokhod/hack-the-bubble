@@ -1,5 +1,6 @@
-import { GameCell } from "./cell";
+import { CellType, GameCell } from "./cell";
 import { GameTile } from "./tile";
+import { randomEnum } from "./utils";
 
 export class GameGrid {
     tiles: GameTile[][];
@@ -33,6 +34,7 @@ export class GameGrid {
                     grid: this,
                     row,
                     col,
+                    type: randomEnum(CellType),
                     height: cell_height,
                     width: cell_width,
                     approval: Math.random() * (100 - 70) + 70
