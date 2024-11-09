@@ -39,13 +39,14 @@ export class Cell {
         this._district = district;
     }
 
-    get tiles(): Tile[] {
+    get tiles(): Tile[][] {
         const tr = this.row * this.height;
         const tc = this.col * this.width;
-        const tiles: Tile[] = [];
-        for (let r = tr; r < tr + this.height; r++) {
-            for (let c = tc; c < tc + this.width; c++) {
-                tiles.push(this.grid.tiles[r][c]);
+        const tiles: Tile[][] = [];
+        for (let roff = 0; roff < this.height; roff++) {
+            tiles[roff] = [];
+            for (let coff = 0; coff < this.width; coff++) {
+                tiles[roff][coff] = this.grid.tiles[tr + roff][tc + coff];
             }
         }
         return tiles;
